@@ -1,4 +1,4 @@
-package org.andres.training.strings.uppercase;
+package org.andres.training.strings.camelcase;
 
 /**
  * There is a sequence of words in CamelCase as a string of letters, , having the following properties:
