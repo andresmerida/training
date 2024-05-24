@@ -1,4 +1,4 @@
-package org.andres.training.coderbyte;
+package org.andres.training.coderbyte.find_intersection;
 
 import java.util.Arrays;
 import java.util.List;

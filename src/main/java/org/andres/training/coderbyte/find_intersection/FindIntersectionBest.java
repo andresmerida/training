@@ -1,4 +1,4 @@
-package org.andres.training.coderbyte;
+package org.andres.training.coderbyte.find_intersection;
 
 public class FindIntersectionBest {
     public static void main(String[] args) {
