@@ -10,5 +10,8 @@ public class MainTest {
         linkedList.add(2);
         linkedList.add(3);
         System.out.println(linkedList);
+        String s1 = "hello";
+        s1.concat(" world!");
+        System.out.println(s1);
     }
 }
