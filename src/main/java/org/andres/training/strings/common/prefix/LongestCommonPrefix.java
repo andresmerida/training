@@ -13,8 +13,9 @@ import java.util.Arrays;
  */
 public class LongestCommonPrefix {
     public static void main(String[] args) {
-        String[] input = {"apple", "ape", "april"};
+        String[] input = {"apple", "appe", "appril",};
         System.out.println(longestCommonPrefix(input));
+        System.out.println(findMinLength(input));
     }
 
     public static String longestCommonPrefix(String[] stringsArray) {
@@ -40,5 +41,31 @@ public class LongestCommonPrefix {
         }
 
         return stringsArray[0].substring(0, i);
+    }
+
+    public static String findMinLength(String[] array) {
+        int min = findMinSize(array);
+        StringBuilder minPrefixBuilder = new StringBuilder();
+        for (int i=0; i < min; i++) {
+            char character = array[0].charAt(i);
+            for (int j = 0; j < array.length; j++) {
+                if (character != array[j].charAt(i)) {
+                    return minPrefixBuilder.toString();
+                }
+            }
+            minPrefixBuilder.append(character);
+        }
+
+        return minPrefixBuilder.toString();
+    }
+
+    private static int findMinSize(String[] array) {
+        int min = array[0].length();
+        for (int i = 1; i < array.length -1; i++) {
+            if (array[i].length() < min) {
+                min = array[i].length();
+            }
+        }
+        return min;
     }
 }
