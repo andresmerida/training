@@ -23,4 +23,18 @@ class AnagramTest {
         String input = "abc";
         assertEquals(-1, Anagram.minChangeToAnagram(input));
     }
+
+    @Test void givenMinOneToBeAnagram2_thenReturnZero() {
+        String input = "xyyx";
+        assertEquals(0, Anagram.minChangeToAnagram2(input));
+    }
+    @Test void givenMinOneToBeAnagram2_thenReturnOne() {
+        String input = "xaxbbbxx";
+        assertEquals(1, Anagram.minChangeToAnagram2(input));
+    }
+
+    @Test void givenDifferentLength2_thenReturnOneNegative() {
+        String input = "abc";
+        assertEquals(-1, Anagram.minChangeToAnagram2(input));
+    }
 }
