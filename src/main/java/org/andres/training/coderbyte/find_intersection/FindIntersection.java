@@ -1,7 +1,7 @@
 package org.andres.training.coderbyte.find_intersection;
 
-import java.util.HashMap;
-import java.util.StringTokenizer;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Have the function FindIntersection(strArr) read the array of strings stored in strArr
@@ -12,48 +12,17 @@ import java.util.StringTokenizer;
  * Example
  * Input: new String[] {"1, 3, 4, 7, 13", "1, 2, 4, 13, 15"}
  * Output: 1,4,13
- *
  * Example 2
  * Input: new String[] {"1, 3, 9, 10, 17, 18", "1, 4, 9, 10"}
  * Output: 1,9,10
  */
 public class FindIntersection {
-    public static void main(String[] args) {
-        String[] arrayString = new String[] {"1, 3, 4, 7, 13", "1, 2, 4, 13, 15"};
-        findIntersection(arrayString);
-    }
 
-    public static void findIntersection(String[] arrayString) {
-        StringTokenizer tokenizer = new StringTokenizer(arrayString[0], ",");
-        HashMap<String, String> stringMap = toMap(tokenizer);
+    public String findIntersection(String[] arrayString) {
+        List<String> list1 = Arrays.asList(arrayString[0].split(", "));
+        List<String> list2 = Arrays.asList(arrayString[1].split(", "));
 
-        StringTokenizer tokenizerSecond = new StringTokenizer(arrayString[1], ",");
-        int tokenCount = tokenizerSecond.countTokens();
-        int counter = 0;
-        StringBuilder intersectionValues = new StringBuilder();
-        for (int i=0; i < tokenCount; i++) {
-            String tokenValue = tokenizerSecond.nextToken().trim();
-            if (stringMap.containsKey(tokenValue)) {
-                if (counter != 0) {
-                    intersectionValues.append(",").append(tokenValue);
-                } else {
-                    intersectionValues.append(tokenValue);
-                }
-                counter++;
-            }
-        }
-
-        System.out.println(intersectionValues.toString());
-    }
-
-    private static HashMap<String, String> toMap(StringTokenizer tokenizer) {
-        HashMap<String, String> stringMap = new HashMap<>();
-        int tokenCount = tokenizer.countTokens();
-        for (int i=0; i < tokenCount; i++) {
-            String tokenValue = tokenizer.nextToken().trim();
-            stringMap.put(tokenValue, tokenValue);
-        }
-
-        return stringMap;
+        List<String> intersectionList = list1.stream().filter(list2::contains).toList();
+        return intersectionList.isEmpty() ? "false" : String.join(", ", intersectionList);
     }
 }
