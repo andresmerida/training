@@ -18,5 +18,8 @@ public class MainTest {
 
         System.out.println(100 + 100 + "KeepOnCoding");
         System.out.println("KeepOnCoding" + 100 + 100);
+
+        String test = "Abc";
+        System.out.println(test.matches("^[a-zA-Z]*$"));
     }
 }
