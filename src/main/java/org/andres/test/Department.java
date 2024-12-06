@@ -31,4 +31,5 @@ public class Department {
     public void add(Student student, Integer mark) {
         studentIntegerMap.put(student, mark);
     }
+    // just adding a comment for test
 }
