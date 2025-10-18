@@ -2,6 +2,7 @@ package org.andres.collection.linkedlist.practice;
 
 public class SimpleLinkedList {
     Node head;
+    int size;
 
     SimpleLinkedList() {
         this.head = null;
