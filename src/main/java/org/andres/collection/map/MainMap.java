@@ -1,10 +1,10 @@
 package org.andres.collection.map;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainMap {
     public static void main(String[] args) {
-        Map<String, Integer> map = new HashMap<>();
+        int count = 2;
+        for (char c : String.valueOf(count).toCharArray()) {
+            System.out.println(c);
+        }
     }
 }
