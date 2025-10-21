@@ -1,7 +1,7 @@
 package org.andres.training.others;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Description problem
@@ -50,5 +50,21 @@ public class RemovingDuplicatesChars {
         }
 
         return sb.toString();
+    }
+
+    public String removeDuplicatesCharacters_withLinkedHashSet(String s) {
+        if (s == null || s.isEmpty()) {
+            throw new IllegalArgumentException("Null or empty String");
+        }
+
+        Set<Character> linkedHashSet = new LinkedHashSet<>();
+        for (char c : s.toCharArray()) {
+            linkedHashSet.add(c);
+        }
+
+        return linkedHashSet
+                .stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 }
