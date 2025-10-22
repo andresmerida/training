@@ -29,4 +29,17 @@ class RemovingDuplicatesCharsTest {
         assertEquals(resultExpected,
                 removingDuplicatesChars.removeDuplicatesCharacters_withASCIIValues("geeksforgeeks"));
     }
+
+    @Test
+    void removeDuplicatesCharacters_withLinkedHashSetTest() {
+        String resultExpected = "geksfor";
+        assertEquals(resultExpected,
+                removingDuplicatesChars.removeDuplicatesCharacters_withASCIIValues("geeksforgeeks"));
+    }
+
+    @Test
+    void removeDuplicatesCharacters_withLinkedHashSet_Test() {
+        String resultExpected = "geksfor";
+        assertEquals(resultExpected, removingDuplicatesChars.removeDuplicatesCharacters_withLinkedHashSet("geeksforgeeks"));
+    }
 }
