@@ -54,7 +54,7 @@ class ValidAnagramTest {
         String s = "listen";
         String t = "silent";
 
-        assertTrue(validAnagram.isAnagram(s, t));
+        assertTrue(validAnagram.isAnagramSolutionTwo(s, t));
     }
 
     @Test
@@ -62,7 +62,7 @@ class ValidAnagramTest {
         String s = "heart";
         String t = "earth";
 
-        assertTrue(validAnagram.isAnagram(s, t));
+        assertTrue(validAnagram.isAnagramSolutionTwo(s, t));
     }
 
     @Test
@@ -70,6 +70,6 @@ class ValidAnagramTest {
         String s = "andres";
         String t = "merida";
 
-        assertFalse(validAnagram.isAnagram(s, t));
+        assertFalse(validAnagram.isAnagramSolutionTwo(s, t));
     }
 }
