@@ -7,5 +7,7 @@ public class MainTest {
         Queue<String> queue = new ArrayDeque<>();
 
         System.out.println(queue.poll());
+        System.out.println(queue.poll());
+        System.out.println(queue.poll());
     }
 }
