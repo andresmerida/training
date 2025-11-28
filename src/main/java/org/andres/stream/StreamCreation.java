@@ -1,9 +1,6 @@
 package org.andres.stream;
 
-import com.sun.java.accessibility.util.Translator;
-
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -83,34 +80,16 @@ public class StreamCreation {
         );
 
         List<Integer> transactionsIds = transactions.stream()
-                .filter(t -> t.getType().equals("GROCERY"))
-                .sorted(Comparator.comparing(InnerTransaction::getValue).reversed())
-                .map(InnerTransaction::getId)
+                .filter(t -> t.type().equals("GROCERY"))
+                .sorted(Comparator.comparing(InnerTransaction::value).reversed())
+                .map(InnerTransaction::id)
                 .toList();
         System.out.println(transactionsIds);
+
+        Map<String, Integer> mapExample = Map.of("Andres", 6, "Ana", 3);
+        System.out.println(mapExample);
     }
 
-    static class InnerTransaction {
-        private final int id;
-        private final int value;
-        private final String type;
-
-        public InnerTransaction(int id, int value, String type) {
-            this.id = id;
-            this.value = value;
-            this.type = type;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public int getValue() {
-            return value;
-        }
-
-        public String getType() {
-            return type;
-        }
+    record InnerTransaction(int id, int value, String type) {
     }
 }
