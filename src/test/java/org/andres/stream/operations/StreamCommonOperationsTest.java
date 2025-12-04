@@ -136,4 +136,94 @@ class StreamCommonOperationsTest {
     void longestCommonPostfix_Throw() {
         assertThrows(IllegalArgumentException.class, () -> streamCommonOperations.longestCommonPostfix(null));
     }
+
+    @Test
+    void getMapWithInitialNames() {
+        List<String> input = List.of("Alice", "Anil", "Bob", "Charlie", "David", "Eve", "Frank");
+        Map<Character, String> expected = Map.of(
+                'A', "Alice, Anil",
+                'B', "Bob",
+                'C', "Charlie",
+                'D', "David",
+                'E', "Eve",
+                'F', "Frank");
+
+        assertEquals(expected, streamCommonOperations.getMapWithInitialNames(input));
+    }
+
+    @Test
+    void findLongestWord() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        String expected = "grapefruit";
+
+        assertEquals(expected, streamCommonOperations.findLongestWord(input));
+    }
+
+    @Test
+    void findLongestWordWithoutStream() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        String expected = "grapefruit";
+
+        assertEquals(expected, streamCommonOperations.findLongestWordWithoutStream(input));
+    }
+
+    @Test
+    void averageLengthOfStrings() {
+        String[] input = {"a", "ab", "abc", "abcd"};
+        Double expected = 2.5;
+
+        assertEquals(expected, streamCommonOperations.averageLengthOfStrings(input));
+    }
+
+    @Test
+    void averageLengthOfStrings_secondExample() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        Double expected = 5.428571428571429;
+
+        assertEquals(expected, streamCommonOperations.averageLengthOfStrings(input));
+    }
+
+    @Test
+    void averageLengthOfStringsWithoutStream() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        Double expected = 5.428571428571429;
+
+        assertEquals(expected, streamCommonOperations.averageLengthOfStringsWithoutStream(input));
+    }
+
+    @Test
+    void sumLengthOfStrings() {
+        String[] input = {"a", "ab", "abc", "abcd"};
+        int expected = 10;
+        assertEquals(expected, streamCommonOperations.sumLengthOfStrings(input));
+    }
+
+    @Test
+    void sumLengthOfStrings_error() {
+        assertThrows(IllegalArgumentException.class, () -> streamCommonOperations.sumLengthOfStrings(null));
+    }
+
+    @Test
+    void countStringsThatStartWithLetter() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi", "ana"};
+        Character character = 'a';
+        int expected = 2;
+
+        assertEquals(expected, streamCommonOperations.countStringsThatStartWithLetter(input, character));
+    }
+
+    @Test
+    void findDistinctStrings() {
+        String[] input = {"banana", "ana", "banana", "andres"};
+        List<String> expected = List.of("banana", "ana", "andres");
+        assertEquals(expected, streamCommonOperations.findDistinctStrings(input));
+    }
+
+    @Test
+    void findSecondLongestWord() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        String expected = "banana";
+
+        assertEquals(expected, streamCommonOperations.findSecondLongestWord(input));
+    }
 }
