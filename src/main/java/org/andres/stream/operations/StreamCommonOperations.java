@@ -101,8 +101,6 @@ public class StreamCommonOperations {
      * Partition strings by length: short (<5), medium (5-10), long (>10)
      */
     public Map<String, List<String>> getPartitionStringsByLength(List<String> list) {
-        Map<String, List<String>> map = new HashMap<>();
-
         return list.stream()
                 .collect(Collectors.groupingBy(str -> {
                     if (str.length() < 5) {
@@ -150,7 +148,7 @@ public class StreamCommonOperations {
     }
 
     /**
-     * Find longest common prefix of a list of strings
+     * Find the longest common prefix of a list of strings
      * Example: ["flower", flow, flight] -> "fl"
      * @param strs array of String
      * @return String common prefix
@@ -172,7 +170,7 @@ public class StreamCommonOperations {
     }
 
     /**
-     * Find longest common postfix of a list of strings
+     * Find the longest common postfix of a list of strings
      * Example: ["Andrew", "Randrew", "Mastrew"] -> "rew"
      * @param array array of String
      * @return String common prefix
@@ -194,5 +192,145 @@ public class StreamCommonOperations {
                 .orElse("");
 
         return new  StringBuilder(postFix).reverse().toString();
+    }
+
+    /**
+     * Create a map of initials to concatenated names
+     * Example Input: List.of("Alice", "Anil", "Bob", "Charlie", "David", "Eve", "Frank")
+     * @param list of strings
+     * @return Map<Character, String> Map.of("A", "Alice Anil", "B", "Bob", "C", "Charlie", "E", "Eve", "F", "Frank")
+     */
+    public Map<Character, String> getMapWithInitialNames(List<String> list) {
+        return list.stream()
+                .collect(Collectors.groupingBy(str -> str.charAt(0),
+                        Collectors.joining(", ")));
+    }
+
+    /**
+     * Find the longest word in an array of strings
+     * Example: ["apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"] -> "grapefruit"
+     * @param strs array of strings
+     * @return String
+     */
+    public String findLongestWord(String[] strs) {
+        if (strs == null) {
+            throw new IllegalArgumentException("Array strs is null");
+        }
+        if (strs.length == 1) {
+            return strs[0];
+        }
+
+        return Arrays.stream(strs)
+                .reduce((s1, s2) ->
+                        s1.length() >= s2.length() ? s1 : s2)
+                .orElse("");
+    }
+
+    public String findLongestWordWithoutStream(String[] strs) {
+        if (strs == null) {
+            throw new IllegalArgumentException("Array strs is null");
+        }
+
+        if (strs.length == 1) {
+            return strs[0];
+        }
+
+        String result = "";
+        int maxLength = 0;
+        for (String str : strs) {
+            if (maxLength < str.length()) {
+                maxLength = str.length();
+                result = str;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Find the average length of strings in an Array
+     * @param strs strings[]
+     * @return double
+     */
+    public Double averageLengthOfStrings(String[] strs) {
+        if (strs == null) {
+            throw new IllegalArgumentException("Array strs is null");
+        }
+
+        return Arrays.stream(strs)
+                .mapToInt(String::length)
+                .average()
+                .orElse(0);
+    }
+
+    public double averageLengthOfStringsWithoutStream(String[] strs) {
+        int sumStringSize = 0;
+        for (String str : strs) {
+            sumStringSize += str.length();
+        }
+        return (double) sumStringSize / strs.length;
+    }
+
+    /**
+     * Find the sum of length of strings in an Array
+     * @param strs strings[]
+     * @return double
+     */
+    public int sumLengthOfStrings(String[] strs) {
+        if (strs == null) {
+            throw new IllegalArgumentException("Array strs is null");
+        }
+
+        return Arrays.stream(strs)
+                .mapToInt(String::length)
+                .sum();
+    }
+
+    /**
+     * Find the count of strings that start with a specific letter
+     * @param strs strings[]
+     * @return int
+     */
+    public int countStringsThatStartWithLetter(String[] strs, Character letter) {
+        if (strs == null) {
+            throw new IllegalArgumentException("Array strs is null");
+        }
+
+        return (int) Arrays.stream(strs)
+                .filter(s -> s.startsWith(String.valueOf(letter)))
+                .count();
+    }
+
+    /**
+     * Find the distinct strings in a list
+     * Example: ["banana", "ana", "banana", "andres"] -> ["banana", "ana", "andres"]
+     * @param strs array
+     * @return List of distinct strings
+     */
+    public List<String> findDistinctStrings(String[] strs) {
+        if (strs == null) {
+            throw new IllegalArgumentException("Array strs is null");
+        }
+
+        return  Arrays.stream(strs)
+                .distinct()
+                .toList();
+    }
+
+    /**
+     * Find the second-longest word in a list of strings
+     * @param fruits list of fruits
+     * @return String second-longest word
+     */
+    public String findSecondLongestWord(String[] fruits) {
+        if (fruits == null) {
+            throw new IllegalArgumentException("Array fruits is null");
+        }
+
+        return Arrays.stream(fruits)
+                .sorted((s1, s2) -> Integer.compare(s2.length(), s1.length()))
+                .skip(1)
+                .findFirst()
+                .orElse("");
     }
 }
