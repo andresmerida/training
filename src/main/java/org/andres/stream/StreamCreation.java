@@ -1,6 +1,7 @@
 package org.andres.stream;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -88,6 +89,57 @@ public class StreamCreation {
 
         Map<String, Integer> mapExample = Map.of("Andres", 6, "Ana", 3);
         System.out.println(mapExample);
+
+        List<String> stringList = List.of("flower", "flow", "flight");
+
+        String longestPrefix = stringList.stream()
+                .reduce((s1, s2) -> {
+                    int index = 0;
+                    while (index < s1.length() && index < s2.length()
+                            && s1.charAt(index) == s2.charAt(index)) {
+                        index++;
+                    }
+
+                    return s1.substring(0, index);
+                }).orElse("");
+        System.out.println("Long prefix: " + longestPrefix);
+
+        List<String> namesList = List.of("Alice", "Anil", "Bob", "Charlie", "David", "Eve", "Frank");
+        Map<Character, String> map = namesList.stream()
+                .collect(Collectors.groupingBy(string -> string.charAt(0), Collectors.joining(", ")));
+        System.out.println(map);
+
+        // Question 13: Find the longest word in a list of strings
+        List<String> wordList = List.of("apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi");
+        String longestWord = wordList.stream()
+                .reduce((s1, s2) -> s1.length() > s2.length() ? s1 : s2)
+                .orElse("");
+        System.out.println("Longest word: " + longestWord);
+
+        System.out.println("================");
+        System.out.println();
+
+        int time = 1;
+        if (time < 18) {
+            System.out.print("Buenos dias");
+            System.out.print(", como estan");
+        } else {
+            System.out.println("Buenas noches");
+        }
+
+        System.out.println();
+        System.out.println("Imprimir saludo con corto condition==");
+        System.out.println();
+        String saludo = time < 18 ? "Buenos dias" : "Buenas noches";
+        System.out.println(saludo);
+        System.out.println();
+
+        System.out.println(time < 18 ? "Buenos dias" : "Buenas noches");
+
+        System.out.println();
+        int time2 = 12;
+        String saludo2 = time2 < 12 ? "Buenos dias" : time < 18 ? "Buenas tardes" : "Buenas noches";
+        System.out.println(saludo2);
     }
 
     record InnerTransaction(int id, int value, String type) {
