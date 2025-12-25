@@ -18,5 +18,6 @@ public class Deer {
     public static void main(String[] args) {
         Stream<String> stream = Stream.iterate("", s -> s + "1");
         System.out.println(stream.limit(2).map(s -> s + "2"));
+        System.out.println(stream.limit(2).map(s -> s + "3"));
     }
 }
