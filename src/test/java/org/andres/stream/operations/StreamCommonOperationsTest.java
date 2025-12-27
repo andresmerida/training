@@ -226,4 +226,50 @@ class StreamCommonOperationsTest {
 
         assertEquals(expected, streamCommonOperations.findSecondLongestWord(input));
     }
+
+    @Test
+    void sumOfStringLengths() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        int expected = 38;
+        assertEquals(expected, streamCommonOperations.sumOfStringLengths(input));
+    }
+
+    @Test
+    void sumOfStringLengthsWithoutStream() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        int expected = 38;
+        assertEquals(expected, streamCommonOperations.sumOfStringLengthsWithoutStream(input));
+    }
+
+    @Test
+    void countStringsThatStartWithLetterWithoutStream() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi", "ana"};
+        int expected = 2;
+
+        assertEquals(expected, streamCommonOperations.countStringsThatStartWithLetterWithoutStream(input));
+    }
+
+    @Test
+    void countStringsThatStartWithLetterTest() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi", "ana"};
+        int expected = 2;
+
+        assertEquals(expected, streamCommonOperations.countStringsThatStartWithLetterWithoutStream(input));
+    }
+
+    @Test
+    void findSecondLongestWordWithoutStreamTest() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        String expected = "banana";
+
+        assertEquals(expected, streamCommonOperations.findSecondLongestWordWithoutStream(input));
+    }
+
+    @Test
+    void findSecondLongestWord2() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        String expected = "banana";
+
+        assertEquals(expected, streamCommonOperations.findSecondLongestWord2(input));
+    }
 }
