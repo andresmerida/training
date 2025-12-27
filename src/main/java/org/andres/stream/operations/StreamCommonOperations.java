@@ -2,6 +2,7 @@ package org.andres.stream.operations;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamCommonOperations {
@@ -385,5 +386,45 @@ public class StreamCommonOperations {
                 .skip(1)
                 .findFirst()
                 .orElse("");
+    }
+
+    public Map<Integer, List<String>> groupByLength(String[] words) {
+        return Arrays.stream(words)
+                .collect(Collectors.groupingBy(String::length));
+    }
+
+    public Map<String, List<Integer>> groupByEvenAndOdd(Integer[] numbers) {
+        return Arrays.stream(numbers)
+                .collect(Collectors.groupingBy(n -> {
+                    if (n % 2 == 0) {
+                        return "even";
+                    } else {
+                        return "odd";
+                    }
+                }));
+    }
+
+    public Map<Integer, Long> groupByLengthAndCountWords(String[] words) {
+        return Arrays.stream(words)
+                .collect(Collectors.groupingBy(String::length, Collectors.counting()));
+    }
+
+    public Map<Integer, List<Integer>> batchProcessEach2() {
+        List<Integer> largeList = IntStream.range(1, 10).boxed().toList();
+        Map<Integer, List<Integer>> result = new HashMap<>();
+
+        int batchSize = 3;
+        for (int i = 0; i < batchSize; i++) {
+            List<Integer> batch = largeList.stream()
+                    .skip((long) i * batchSize)
+                    .limit(batchSize)
+                    .toList();
+            if (batch.isEmpty()) {
+                break;
+            }
+            result.put(i + 1, batch);
+        }
+
+        return result;
     }
 }

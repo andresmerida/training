@@ -272,4 +272,35 @@ class StreamCommonOperationsTest {
 
         assertEquals(expected, streamCommonOperations.findSecondLongestWord2(input));
     }
+
+    @Test
+    void groupByLengthTest() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        List<String> expected = List.of("banana", "cherry");
+
+        assertEquals(expected, streamCommonOperations.groupByLength(input).get(6));
+    }
+
+    @Test
+    void groupByEvenAndOddTest() {
+        Integer[] input = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        Map<String, List<Integer>> expected = Map.of("even", List.of(2, 4, 6, 8, 10), "odd", List.of(1, 3, 5, 7, 9));
+
+        assertEquals(expected, streamCommonOperations.groupByEvenAndOdd(input));
+    }
+
+    @Test
+    void groupByLengthAndCountWordsTest() {
+        String[] input = {"apple", "banana", "cherry", "date", "fig", "grapefruit", "kiwi"};
+        Map<Integer, Long> mapExpected = Map.of(3, 1L, 4, 2L, 5, 1L, 6, 2L, 10, 1L);
+
+        assertEquals(mapExpected, streamCommonOperations.groupByLengthAndCountWords(input));
+    }
+
+    @Test
+    void batchProcessEach2Test() {
+        Map<Integer, List<Integer>> map = Map.of(1, List.of(1, 2, 3), 2, List.of(4, 5, 6), 3, List.of(7, 8, 9));
+
+        assertEquals(map, streamCommonOperations.batchProcessEach2());
+    }
 }
