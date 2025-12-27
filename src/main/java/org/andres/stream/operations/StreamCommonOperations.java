@@ -333,4 +333,57 @@ public class StreamCommonOperations {
                 .findFirst()
                 .orElse("");
     }
+
+    /**
+     * Find the sum of lengths of all strings in a list
+     */
+    public int sumOfStringLengths(String[] words) {
+        return Arrays.stream(words)
+                .mapToInt(String::length)
+                .sum();
+    }
+
+    public int sumOfStringLengthsWithoutStream(String[] words) {
+        int sum = 0;
+        for (String word : words) {
+            sum += word.length();
+        }
+        return sum;
+    }
+
+    /**
+     * Find the count of strings that start with 'a' specific letter
+     */
+    public int countStringsThatStartWithLetterWithoutStream(String[] words) {
+        int count = 0;
+        for (String word : words) {
+            if (word.startsWith("a")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int countStringsThatStartWithLetter(String[] words) {
+        return (int) Arrays.stream(words)
+                .filter(s -> s.startsWith("a"))
+                .count();
+    }
+
+    /**
+     * Find the second longest word in a list of strings
+     */
+    public String findSecondLongestWordWithoutStream(String[] fruits) {
+        List<String> words = Arrays.asList(fruits);
+        words.sort((s1, s2) -> Integer.compare(s2.length(), s1.length()));
+        return words.get(1);
+    }
+
+    public String findSecondLongestWord2(String[] fruits) {
+        return Arrays.stream(fruits)
+                .sorted((s1, s2) -> Integer.compare(s2.length(), s1.length()))
+                .skip(1)
+                .findFirst()
+                .orElse("");
+    }
 }
