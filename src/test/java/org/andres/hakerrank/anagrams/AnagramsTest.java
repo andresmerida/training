@@ -1,5 +1,6 @@
 package org.andres.hakerrank.anagrams;
 
+import org.andres.hakerrank.string.anagrams.Anagrams;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

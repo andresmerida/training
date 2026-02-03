@@ -1,4 +1,4 @@
-package org.andres.hakerrank.string_tokens;
+package org.andres.hakerrank.string.string_tokens;
 
 import java.util.Scanner;
 

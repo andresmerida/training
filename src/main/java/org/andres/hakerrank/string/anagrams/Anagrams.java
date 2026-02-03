@@ -1,4 +1,4 @@
-package org.andres.hakerrank.anagrams;
+package org.andres.hakerrank.string.anagrams;
 
 import java.util.Arrays;
 import java.util.HashMap;
