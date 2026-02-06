@@ -1,4 +1,4 @@
-package org.andres.hakerrank.stream_profilter;
+package org.andres.hakerrank.streams;
 
 public record Sale(String category, double amount) {
 }
