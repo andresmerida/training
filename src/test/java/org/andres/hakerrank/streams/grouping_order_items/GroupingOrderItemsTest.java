@@ -1,4 +1,4 @@
-package org.andres.hakerrank.stream_profilter.grouping_order_items;
+package org.andres.hakerrank.streams.grouping_order_items;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;

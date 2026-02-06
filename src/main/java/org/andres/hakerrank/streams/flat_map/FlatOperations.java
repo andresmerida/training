@@ -1,4 +1,4 @@
-package org.andres.hakerrank.stream_profilter.flat_map;
+package org.andres.hakerrank.streams.flat_map;
 
 import java.util.List;
 import java.util.Optional;

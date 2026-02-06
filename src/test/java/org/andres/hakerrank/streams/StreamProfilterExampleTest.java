@@ -1,4 +1,4 @@
-package org.andres.hakerrank.stream_profilter;
+package org.andres.hakerrank.streams;
 
 import org.junit.jupiter.api.Test;
 
